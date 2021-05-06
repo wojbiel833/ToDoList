@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import ReactHtmlParser from "react-html-parser";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ReactHtmlParser from 'react-html-parser';
 
-import styles from "./Hero.scss";
+import styles from './Hero.scss';
 
-const Hero = (props) => {
+const Hero = props => {
   return (
     <header className={styles.component}>
       <h2 className={styles.title}>{ReactHtmlParser(props.titleText)}</h2>
@@ -15,7 +15,7 @@ const Hero = (props) => {
 
 Hero.propTypes = {
   titleText: PropTypes.node,
-  src: PropTypes.string,
+  imgSrc: PropTypes.string,
 };
 
 export default Hero;

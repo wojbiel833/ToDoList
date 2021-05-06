@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import styles from "./Creator.scss";
-import Button from "../Button/Button";
+import styles from './Creator.scss';
+import Button from '../Button/Button';
 
 class Creator extends React.Component {
   static propTypes = {
@@ -10,15 +10,15 @@ class Creator extends React.Component {
   };
 
   static defaultProps = {
-    text: "Add new item",
+    text: 'Add new item',
   };
 
   state = {
-    value: "",
+    value: '',
     visibleButtons: false,
   };
 
-  handleChange = (event) => {
+  handleChange = event => {
     // console.log(event);
     this.setState({
       value: event.target.value,
@@ -27,19 +27,19 @@ class Creator extends React.Component {
   };
 
   handleOK = () => {
-    if (this.state.value != "") {
+    if (this.state.value != '') {
       this.props.action(this.state.value);
       this.setState({
-        value: "",
+        value: '',
         visibleButtons: false,
       });
     }
   };
 
   handleCancel = () => {
-    if (window.confirm("Do you really want to cancel?")) {
+    if (window.confirm('Do you really want to cancel?')) {
       this.setState({
-        value: "",
+        value: '',
         visibleButtons: false,
       });
     }
@@ -57,7 +57,7 @@ class Creator extends React.Component {
         <div
           className={
             styles.buttons +
-            (this.state.visibleButtons ? " " + styles.buttonsShown : "")
+            (this.state.visibleButtons ? ' ' + styles.buttonsShown : '')
           }
         >
           <Button onClick={this.handleOK}>OK</Button>
@@ -69,5 +69,9 @@ class Creator extends React.Component {
     );
   }
 }
+
+Creator.propTypes = {
+  action: PropTypes.func,
+};
 
 export default Creator;

@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import styles from "./Column.scss";
-import Card from "./../Card/Card";
-import Creator from "./../Creator/Creator";
-import Icon from "./../Icon/Icon";
-import { settings, listData } from "./../../data/dataStore";
+import styles from './Column.scss';
+import Card from './../Card/Card';
+import Creator from './../Creator/Creator';
+import Icon from './../Icon/Icon';
+import { settings /*, listData */ } from './../../data/dataStore';
 
 class Column extends React.Component {
   state = {
@@ -17,7 +17,7 @@ class Column extends React.Component {
   };
 
   addCard(title) {
-    this.setState((state) => ({
+    this.setState(state => ({
       cards: [
         ...state.cards,
         {
@@ -25,7 +25,7 @@ class Column extends React.Component {
             ? state.cards[state.cards.length - 1].key + 1
             : 0,
           title,
-          icon: "list-alt",
+          icon: 'list-alt',
           cards: [],
         },
       ],
@@ -49,7 +49,7 @@ class Column extends React.Component {
         <div>
           <Creator
             text={settings.cardCreatorText}
-            action={(title) => {
+            action={title => {
               this.addCard(title);
             }}
           />
@@ -58,5 +58,11 @@ class Column extends React.Component {
     );
   }
 }
+
+Column.propTypes = {
+  cards: PropTypes.array,
+  title: PropTypes.string,
+  icon: PropTypes.string,
+};
 
 export default Column;

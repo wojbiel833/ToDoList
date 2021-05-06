@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import styles from "./Card.scss";
+import styles from './Card.scss';
 
 class Card extends React.Component {
   state = {
@@ -19,5 +19,10 @@ class Card extends React.Component {
     );
   }
 }
+
+Card.propTypes = {
+  cards: PropTypes.array,
+  cardCreatorText: PropTypes.string,
+};
 
 export default Card;

@@ -1,13 +1,16 @@
-import React from "react";
-import Hamburger from "hamburger-react";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Hamburger from 'hamburger-react';
 
-import styles from "./App.scss";
-import List from "./../List/List";
-import Creator from "./../Creator/Creator";
-import { settings, pageContents, listData } from "../../data/dataStore";
-
-// const Hamburger = () => {
-// };
+import styles from './App.scss';
+import List from './../List/List';
+import Creator from './../Creator/Creator';
+import {
+  settings,
+  pageContents,
+  listData,
+  newListData,
+} from '../../data/dataStore';
 
 export class App extends React.Component {
   state = {
@@ -15,7 +18,7 @@ export class App extends React.Component {
   };
 
   addList(title) {
-    this.setState((state) => ({
+    this.setState(state => ({
       lists: [
         ...state.lists,
         {
@@ -23,7 +26,7 @@ export class App extends React.Component {
             ? state.lists[state.lists.length - 1].key + 1
             : 0,
           title,
-          icon: "list-alt",
+          icon: 'list-alt',
           cards: [],
         },
       ],
@@ -40,17 +43,17 @@ export class App extends React.Component {
           {/* <Hamburger toggled={isOpen} toggle={setOpen} />; */}
           <Hamburger
             className={styles.hamburger}
-            onToggle={(toggled) => {
-              const lists = document.querySelector(".List_component_3J2m8");
+            onToggle={toggled => {
+              const lists = document.querySelector('.List_component_3J2m8');
               console.log(lists);
               if (toggled) {
                 // open a menu
-                lists.classList.remove("hidden");
-                console.log("show");
+                lists.classList.remove('hidden');
+                console.log('show');
               } else {
                 // close a menu
-                lists.classList.add("hidden");
-                console.log("hide");
+                lists.classList.add('hidden');
+                console.log('hide');
               }
             }}
           />
@@ -61,12 +64,12 @@ export class App extends React.Component {
             <List {...listData} />
             <div className={styles.columns}>
               {this.state.lists.map(({ key, ...listProps }) => (
-                <List {...listData} key={key} {...listProps} />
+                <List {...newListData} key={key} {...listProps} />
               ))}
             </div>
             <Creator
               text={settings.listCreatorText}
-              action={(title) => {
+              action={title => {
                 this.addList(title);
               }}
             />
@@ -76,5 +79,9 @@ export class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  lists: PropTypes.array,
+};
 
 export default App;
