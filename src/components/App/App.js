@@ -1,20 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Hamburger from 'hamburger-react';
+// import Hamburger from 'hamburger-react';
 
 import styles from './App.scss';
-import List from './../List/List';
-import Creator from './../Creator/Creator';
-import {
-  settings,
-  pageContents,
-  listData,
-  newListData,
-} from '../../data/dataStore';
+import List from './../List/ListContainer';
+// import Creator from './../Creator/Creator';
+// import {
+//   settings,
+//   pageContents,
+// listData,
+// newListData,
+// } from '../../data/dataStore';
 
 export class App extends React.Component {
   state = {
     lists: this.props.lists || [],
+  };
+
+  static propTypes = {
+    title: PropTypes.node,
+    subtitle: PropTypes.node,
+    lists: PropTypes.array,
   };
 
   addList(title) {
@@ -35,13 +41,15 @@ export class App extends React.Component {
 
   render() {
     // const [isOpen, setOpen] = useState(false);
+    const { title, subtitle, lists } = this.props;
+
     return (
       <div>
         <main className={styles.component}>
-          <h1 className={styles.title}>{pageContents.title}</h1>
-          <h2 className={styles.subtitle}>{pageContents.subtitle}</h2>
+          <h1 className={styles.title}>{title}</h1>
+          <h2 className={styles.subtitle}>{subtitle}</h2>
           {/* <Hamburger toggled={isOpen} toggle={setOpen} />; */}
-          <Hamburger
+          {/* <Hamburger
             className={styles.hamburger}
             onToggle={toggled => {
               const lists = document.querySelector('.List_component_3J2m8');
@@ -56,32 +64,30 @@ export class App extends React.Component {
                 console.log('hide');
               }
             }}
-          />
+          /> */}
           <div
             // id="lists"
             className={styles.lists}
           >
-            <List {...listData} />
-            <div className={styles.columns}>
+            {lists.map(listData => (
+              <List key={listData.id} {...listData} />
+            ))}
+            {/* <div className={styles.columns}>
               {this.state.lists.map(({ key, ...listProps }) => (
                 <List {...newListData} key={key} {...listProps} />
               ))}
-            </div>
-            <Creator
+            </div> */}
+            {/* <Creator
               text={settings.listCreatorText}
               action={title => {
                 this.addList(title);
               }}
-            />
+            /> */}
           </div>
         </main>
       </div>
     );
   }
 }
-
-App.propTypes = {
-  lists: PropTypes.array,
-};
 
 export default App;
