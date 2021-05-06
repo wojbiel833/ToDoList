@@ -1,4 +1,4 @@
-@import '../../styles/settings.scss';
+@import "../../styles/settings.scss";
 
 .component {
   padding: $base-size;
@@ -20,5 +20,19 @@
 }
 
 .title + .subtitle {
-  margin-top: (- $base-size * 3);
+  margin-top: (-$base-size * 3);
+}
+
+.hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lists {
+  background-color: transparent;
+}
+
+.hidden {
+  display: none;
 }

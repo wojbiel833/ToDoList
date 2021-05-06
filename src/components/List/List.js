@@ -6,7 +6,7 @@ import styles from "./List.scss";
 import Hero from "./../Hero/Hero";
 import Column from "./../Column/Column";
 import Creator from "./../Creator/Creator";
-import { settings } from "../../data/dataStore";
+import { listData, settings } from "../../data/dataStore";
 
 class List extends React.Component {
   state = {
@@ -24,6 +24,7 @@ class List extends React.Component {
 
   static defaultProps = {
     description: settings.defaultListDescription,
+    src: listData.defaultImg,
   };
 
   addColumn(title) {
@@ -47,7 +48,7 @@ class List extends React.Component {
       <section className={styles.component}>
         <Hero titleText={this.props.title} imgSrc={this.props.image} />
         <div className={styles.description}>
-          {ReactHtmlParser(this.props.desctiption)}
+          {ReactHtmlParser(this.props.description)}
         </div>
         <div className={styles.columns}>
           {this.state.columns.map(({ key, ...columnProps }) => (
