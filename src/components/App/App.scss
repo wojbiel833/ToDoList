@@ -1,4 +1,4 @@
-@import "../../styles/settings.scss";
+@import '../../styles/settings.scss';
 
 .component {
   padding: $base-size;
@@ -23,10 +23,18 @@
   margin-top: (-$base-size * 3);
 }
 
-.hamburger {
-  display: flex;
-  align-items: center;
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.button {
+  padding: 10px 15px;
   justify-content: center;
+
+  i {
+    font-size: 20px;
+  }
 }
 
 .lists {
