@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { settings } from './../../data/dataStore';
 import styles from './Card.scss';
 
 class Card extends React.Component {
   state = {
     cards: this.props.cards || [],
+  };
+
+  static defaultProps = {
+    icon: settings.defaultCardIcon,
   };
 
   static propTypes = {

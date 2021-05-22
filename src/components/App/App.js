@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import shortid from 'shortid';
 
 import styles from './App.scss';
-import List from './../List/List';
+import List from './../List/ListContainer';
 import Creator from './../Creator/Creator';
 import { settings, pageContents, listData } from '../../data/dataStore';
 

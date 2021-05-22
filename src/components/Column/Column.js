@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './Column.scss';
-import Card from './../Card/Card';
+import Card from './../Card/CardContainer';
 import Creator from './../Creator/Creator';
 import Icon from './../Icon/Icon';
 import { settings } from './../../data/dataStore';

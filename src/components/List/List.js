@@ -4,7 +4,7 @@ import ReactHtmlParser from 'react-html-parser';
 
 import styles from './List.scss';
 import Hero from './../Hero/Hero';
-import Column from './../Column/Column';
+import Column from './../Column/ColumnContainer';
 import Creator from './../Creator/Creator';
 import { listData, settings } from '../../data/dataStore';
 
@@ -28,33 +28,15 @@ class List extends React.Component {
     image: listData.defaultImg,
   };
 
-  // addColumn(title) {
-  //   this.setState(state => ({
-  //     columns: [
-  //       ...state.columns,
-  //       {
-  //         key: state.columns.length
-  //           ? state.columns[state.columns.length - 1].key + 1
-  //           : 0,
-  //         title,
-  //         icon: 'list-alt',
-  //         cards: [],
-  //       },
-  //     ],
-  //   }));
-  // }
-
   render() {
-    const { addColumn } = this.props;
+    const { title, image, description, addColumn } = this.props;
     return (
       <section className={styles.component}>
-        <Hero titleText={this.props.title} imgSrc={this.props.image} />
-        <div className={styles.description}>
-          {ReactHtmlParser(this.props.description)}
-        </div>
+        <Hero titleText={title} imgSrc={image} />
+        <div className={styles.description}>{ReactHtmlParser(description)}</div>
         <div className={styles.columns}>
-          {this.state.columns.map(({ key, ...columnProps }) => (
-            <Column key={key} {...columnProps} />
+          {this.state.columns.map(({ id, ...columnProps }) => (
+            <Column key={id} {...columnProps} />
           ))}
         </div>
         <div className={styles.creator}>
